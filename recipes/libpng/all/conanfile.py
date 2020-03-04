@@ -58,7 +58,7 @@ class LibpngConan(ConanFile):
         cmake.definitions["PNG_TESTS"] = "OFF"
         cmake.definitions["PNG_SHARED"] = self.options.shared
         cmake.definitions["PNG_STATIC"] = not self.options.shared
-        cmake.definitions["PNG_DEBUG"] = "OFF" if self.settings.build_type == "Release" else "ON"
+        cmake.definitions["PNG_DEBUG"] = "OFF" if self.settings.build_type != "Debug" else "ON"
         if self.settings.os == "Emscripten":
             cmake.definitions["PNG_BUILD_ZLIB"] = "ON"
             cmake.definitions["M_LIBRARY"] = ""
